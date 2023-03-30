@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "980011240845",
+    "project_id": "domesticviolence-ba985",
+    "storage_bucket": "domesticviolence-ba985.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980011240845:android:104e79a0d4e686196401c4",
+        "android_client_info": {
+          "package_name": "com.besafe.besafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980011240845-u54pr3ejt9l89rpdvgrrust726siajiu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBemK_Cqw78kPf7fZuUWxSA0PrWY4qGdZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980011240845-u54pr3ejt9l89rpdvgrrust726siajiu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
