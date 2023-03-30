@@ -22,7 +22,9 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
+              Spacer(),
               SosSignal(),
+              Padding(padding: EdgeInsets.symmetric(vertical: 20)),
               Spacer(),
               CallBlock(name: 'Ministry of Internal Affairs', phone: '1259'),
               CallBlock(name: 'Women\'s Helpline', phone: '1146'),

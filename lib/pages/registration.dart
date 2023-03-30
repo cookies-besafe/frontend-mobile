@@ -62,7 +62,10 @@ class _RegistrationState extends State<Registration> {
         InputEntry(
             text: 'First Name',
             widget: FormattedTextField(
-                text: 'Name', controller: firstNameController)),
+              text: 'Name',
+              controller: firstNameController,
+              autofocus: true,
+            )),
         InputEntry(
             text: 'Last name',
             widget: FormattedTextField(
@@ -105,8 +108,11 @@ class _RegistrationState extends State<Registration> {
       children: [
         InputEntry(
             text: 'Email',
-            widget:
-                FormattedTextField(text: 'Email', controller: emailController)),
+            widget: FormattedTextField(
+              text: 'Email',
+              controller: emailController,
+              autofocus: true,
+            )),
         InputEntry(
             text: 'Phone number',
             widget: FormattedTextField(
@@ -149,30 +155,38 @@ class _RegistrationState extends State<Registration> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage('assets/images/registration-bg.png'),
-          fit: BoxFit.contain,
-          alignment: Alignment.topCenter,
-        )),
-        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 40),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Spacer(),
-            const Spacer(),
-            const MainHeader(text: 'Registration'),
-            registrationStep == 1
-                ? _registrationStepOne()
-                : _registrationStepTwo(),
-            const Spacer(),
-            const AlreadyHaveAnAccountWidget(),
-          ],
+    return Theme(
+        data: ThemeData().copyWith(
+          dividerColor: Colors.transparent,
         ),
-      ),
-    );
+        child: Scaffold(
+          body: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage('assets/images/registration-bg.png'),
+              fit: BoxFit.contain,
+              alignment: Alignment.topCenter,
+            )),
+            padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 40),
+            child: Center(
+              child: SingleChildScrollView(
+                child: IntrinsicHeight(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 20)),
+                      const MainHeader(text: 'Registration'),
+                      registrationStep == 1
+                          ? _registrationStepOne()
+                          : _registrationStepTwo(),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          persistentFooterButtons: const [AlreadyHaveAnAccountWidget()],
+        ));
   }
 }

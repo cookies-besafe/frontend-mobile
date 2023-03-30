@@ -6,6 +6,7 @@ import 'package:besafe/models.dart';
 
 mixin AddEditTrustedPeopleMixin<T extends StatefulWidget> on State<T> {
   int? get id;
+
   String get actionButtonText;
 
   final TextEditingController nameController = TextEditingController(),
@@ -35,41 +36,49 @@ mixin AddEditTrustedPeopleMixin<T extends StatefulWidget> on State<T> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
         appBar: const BeSafeAppBar(
             titleText: 'Trusted people', titleType: TitleType.secondary),
-        body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
-          color: Colors.white,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              InputEntry(
-                  text: 'Name',
-                  widget: FormattedTextField(
-                      text: 'Name', controller: nameController)),
-              InputEntry(
-                  text: 'Phone',
-                  widget: FormattedTextField(
-                      text: '+998 ()', controller: phoneController)),
-              InputEntry(
-                  text: 'Email',
-                  widget: FormattedTextField(
-                      text: 'example@gmail.com', controller: emailController)),
-              InputEntry(
-                  text: 'Telegram username',
-                  widget: FormattedTextField(
-                      text: '@example',
-                      controller: telegramNicknameController)),
-              const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-              PrimaryButton(
-                  text: actionButtonText,
-                  onPressed: () {
-                    TrustedContactModel trustedContact = gatherValues();
-                    _sendRequest(trustedContact).then((value) =>
-                        Navigator.pushNamed(context, '/trustedContact/list'));
-                  }),
-            ],
+        body: SingleChildScrollView(
+          child: IntrinsicHeight(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
+              color: Colors.white,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  InputEntry(
+                      text: 'Name',
+                      widget: FormattedTextField(
+                        text: 'Name',
+                        controller: nameController,
+                        autofocus: id == null,  // Autofocus only if adding new trusted contact
+                      )),
+                  InputEntry(
+                      text: 'Phone',
+                      widget: FormattedTextField(
+                          text: '+998 ()', controller: phoneController)),
+                  InputEntry(
+                      text: 'Email',
+                      widget: FormattedTextField(
+                          text: 'example@gmail.com',
+                          controller: emailController)),
+                  InputEntry(
+                      text: 'Telegram username',
+                      widget: FormattedTextField(
+                          text: '@example',
+                          controller: telegramNicknameController)),
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+                  PrimaryButton(
+                      text: actionButtonText,
+                      onPressed: () {
+                        TrustedContactModel trustedContact = gatherValues();
+                        _sendRequest(trustedContact).then((value) =>
+                            Navigator.pushNamed(
+                                context, '/trustedContact/list'));
+                      }),
+                ],
+              ),
+            ),
           ),
         ),
         endDrawer: SizedBox(

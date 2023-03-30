@@ -151,7 +151,7 @@ class ArticleModel {
   }
 
   String pubDate() {
-    return '${DateFormat.d().format(createdAt)}/${DateFormat.m().format(createdAt)}/${DateFormat.y().format(createdAt)}';
+    return '${DateFormat.d().format(createdAt)} ${DateFormat.MMM().format(createdAt)} ${DateFormat.y().format(createdAt)}';
   }
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) => ArticleModel(
