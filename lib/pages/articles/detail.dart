@@ -39,7 +39,7 @@ class _ArticleDetailState extends State<ArticleDetail> {
             titleText: 'Articles',
             titleType: TitleType.secondary,
             backButton: true),
-        body: getContents(),
+        body: SingleChildScrollView(child: getContents(),),
         endDrawer: SizedBox(
           width: 270,
           child: MenuDrawer(context: context),
